@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+		<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite">
+<test name="Open Weather Testing">
+	<groups>
+		<define name="AllTest"/>
+
+		<run>
+			<include name="main" />
+		</run>
+	</groups>
+	<classes>
+		<class name="lt.povilas.pupkys.test.OpenWeatherTesting" />
+	</classes>
+</test>
+</suite>

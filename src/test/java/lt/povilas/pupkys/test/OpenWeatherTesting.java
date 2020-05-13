@@ -1,6 +1,7 @@
 package lt.povilas.pupkys.test;
 
-import lt.povilas.pupkys.autotester.WebTester;
+import lt.povilas.pupkys.autotester.OpenWeatherTester;
+import lt.povilas.pupkys.testdata.TestUser;
 import org.testng.annotations.Test;
 
 /**
@@ -8,19 +9,24 @@ import org.testng.annotations.Test;
  * @project SEB-GSV-Test-Automation
  */
 public class OpenWeatherTesting {
-    WebTester t = new WebTester();
+    TestUser ts = new TestUser();
+    OpenWeatherTester t = new OpenWeatherTester();
 
-    @Test
-    public void tc00001() throws Exception {
-        t.openInChrome("https://home.openweathermap.org/");
-        t.setInput("Enter email", "tt1585087@gmail.com");
-        t.setInput("Password", "Slaptazodis1");
+    @Test(description = "API Key testing", groups = "main")
+    public void tc00001() {
+        t.openInChrome(ts.getTestPage());
+        t.setInput("Enter email", ts.getUserName());
+        t.setInput("Password", ts.getPassword());
         t.click("Submit");
         t.click("API keys");
-        t.setInput("Name", "newAPIKey");
+        t.setInput("Name", ts.getKeyName());
         t.click("Generate");
         t.isTextVisible("API key was created successfully");
-
-
+        t.clickEdit(ts.getCurrentKeyName());
+        t.setInput("Name", ts.getNewKeyName(), 1);
+        t.click("Edit");
+        t.isTextVisible("API key was edited successfully");
+        t.isTextVisible(ts.getCurrentKeyName());
+        t.saveAPIKey(ts.getCurrentKeyName());
     }
 }

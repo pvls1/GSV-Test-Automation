@@ -7,8 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -24,18 +23,21 @@ public class WebTester {
     public void openInChrome(String url) {
         System.setProperty("selenide.browser", "chrome");
         open(url);
+        getWebDriver().manage().window().maximize();
         jsExec = (JavascriptExecutor) getWebDriver();
     }
 
     public void openInFireFox(String url) {
         System.setProperty("selenide.browser", "firefox");
         open(url);
+        getWebDriver().manage().window().maximize();
         jsExec = (JavascriptExecutor) getWebDriver();
     }
 
     public void openInInternetExplorer(String url) {
         System.setProperty("selenide.browser", "ie");
         open(url);
+        getWebDriver().manage().window().maximize();
         jsExec = (JavascriptExecutor) getWebDriver();
     }
 
@@ -110,13 +112,9 @@ public class WebTester {
         click(text, 0);
     }
 
-    public void isTextVisible(String text, int index) {
-        SelenideElement se = findElementsByText(text).get(index);
+    public void isTextVisible(String text) {
+        SelenideElement se = $(By.xpath("//*[text()[normalize-space(.)=\"" + text + "\"]]"));
         highlightElement(se);
         assertTrue("No match", se.isDisplayed());
-    }
-
-    public void isTextVisible(String text) {
-        isTextVisible(text, 0);
     }
 }
