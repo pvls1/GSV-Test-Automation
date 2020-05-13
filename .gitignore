@@ -1,0 +1,7 @@
+﻿build
+.idea
+target
+test-output
+SEB-GSV-Test-Automation.iml
+src/main/main.iml
+src/test/test.iml
