@@ -20,21 +20,21 @@ public class WebTester {
     protected SelenideElement lastElement = null;
     protected JavascriptExecutor jsExec;
 
-    public void openInChrome(String url) {
+    protected void openInChrome(String url) {
         System.setProperty("selenide.browser", "chrome");
         open(url);
         getWebDriver().manage().window().maximize();
         jsExec = (JavascriptExecutor) getWebDriver();
     }
 
-    public void openInFireFox(String url) {
+    protected void openInFireFox(String url) {
         System.setProperty("selenide.browser", "firefox");
         open(url);
         getWebDriver().manage().window().maximize();
         jsExec = (JavascriptExecutor) getWebDriver();
     }
 
-    public void openInInternetExplorer(String url) {
+    protected void openInInternetExplorer(String url) {
         System.setProperty("selenide.browser", "ie");
         open(url);
         getWebDriver().manage().window().maximize();

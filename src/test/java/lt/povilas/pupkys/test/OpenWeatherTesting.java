@@ -14,7 +14,7 @@ public class OpenWeatherTesting {
 
     @Test(description = "API Key testing", groups = "main")
     public void tc00001() {
-        t.openInChrome(ts.getTestPage());
+        t.openChrome(ts.getTestPage());
         t.setInput("Enter email", ts.getUserName());
         t.setInput("Password", ts.getPassword());
         t.click("Submit");
@@ -27,6 +27,6 @@ public class OpenWeatherTesting {
         t.click("Edit");
         t.isTextVisible("API key was edited successfully");
         t.isTextVisible(ts.getCurrentKeyName());
-        t.saveAPIKey(ts.getCurrentKeyName());
+        t.saveAPIKeyToFile(ts.getCurrentKeyName());
     }
 }
