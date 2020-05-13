@@ -24,18 +24,21 @@ public class OpenWeatherTester extends WebTester {
         }
     }
 
-    public void openChrome(String url) {
-        openInChrome(url);
+    @Override
+    public void openInChrome(String url){
+        super.openInChrome(url);
         acceptCookies();
     }
 
-    public void openFirefox(String url) {
-        openInFireFox(url);
+    @Override
+    public void openInFireFox(String url){
+        super.openInFireFox(url);
         acceptCookies();
     }
 
-    public void openExplorer(String url) {
-        openInInternetExplorer(url);
+    @Override
+    public void openInInternetExplorer(String url){
+        super.openInInternetExplorer(url);
         acceptCookies();
     }
 
