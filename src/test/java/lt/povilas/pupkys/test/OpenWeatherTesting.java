@@ -9,24 +9,24 @@ import org.testng.annotations.Test;
  * @project SEB-GSV-Test-Automation
  */
 public class OpenWeatherTesting {
-    TestUser ts = new TestUser();
+    TestUser tu = new TestUser();
     OpenWeatherTester t = new OpenWeatherTester();
 
     @Test(description = "API Key testing", groups = "main")
     public void tc00001() {
-        t.openInChrome(ts.getTestPage());
-        t.setInput("Enter email", ts.getUserName());
-        t.setInput("Password", ts.getPassword());
+        t.openInChrome(tu.getTestPage());
+        t.setInput("Enter email", tu.getUserName());
+        t.setInput("Password", tu.getPassword());
         t.click("Submit");
         t.click("API keys");
-        t.setInput("Name", ts.getKeyName());
+        t.setInput("Name", tu.getKeyName());
         t.click("Generate");
         t.isTextVisible("API key was created successfully");
-        t.clickEdit(ts.getCurrentKeyName());
-        t.setInput("Name", ts.getNewKeyName(), 1);
+        t.clickEdit(tu.getCurrentKeyName());
+        t.setInput("Name", tu.getNewKeyName(), 1);
         t.click("Edit");
         t.isTextVisible("API key was edited successfully");
-        t.isTextVisible(ts.getCurrentKeyName());
-        t.saveAPIKeyToFile(ts.getCurrentKeyName());
+        t.isTextVisible(tu.getCurrentKeyName());
+        t.saveAPIKeyToFile(tu.getCurrentKeyName());
     }
 }
