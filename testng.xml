@@ -5,10 +5,14 @@
 <suite name="Suite">
 <test name="Open Weather Testing">
 	<groups>
-		<define name="AllTest"/>
+		<define name="AllTest">
+			<include name="all" />
+			<include name="ui" />
+			<include name="api" />
+		</define>
 
 		<run>
-			<include name="main" />
+			<include name="all" />
 		</run>
 	</groups>
 	<classes>

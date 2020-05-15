@@ -1,5 +1,6 @@
 package lt.povilas.pupkys.test;
 
+import lt.povilas.pupkys.autotester.APITester;
 import lt.povilas.pupkys.autotester.OpenWeatherTester;
 import lt.povilas.pupkys.testdata.TestUser;
 import org.testng.annotations.Test;
@@ -11,8 +12,9 @@ import org.testng.annotations.Test;
 public class OpenWeatherTesting {
     TestUser tu = new TestUser();
     OpenWeatherTester t = new OpenWeatherTester();
+    APITester at = new APITester();
 
-    @Test(description = "API Key testing", groups = "main")
+    @Test(description = "API Key testing", groups = {"ui", "all"})
     public void tc00001() {
         t.openInChrome(tu.getTestPage());
         t.setInput("Enter email", tu.getUserName());
@@ -28,5 +30,10 @@ public class OpenWeatherTesting {
         t.isTextVisible("API key was edited successfully");
         t.isTextVisible(tu.getCurrentKeyName());
         t.saveAPIKeyToFile(tu.getCurrentKeyName());
+    }
+
+    @Test(description = "API response testing", groups = {"api", "all"})
+    public void tc00002() {
+        at.getCurrentWeatherByCityName("Vilnius", t.loadAPIKeyFromFile());
     }
 }

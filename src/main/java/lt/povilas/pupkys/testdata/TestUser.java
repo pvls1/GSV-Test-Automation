@@ -42,7 +42,7 @@ public class TestUser {
         return currentKeyName;
     }
 
-    public String getNewKeyName(){
+    public String getNewKeyName() {
         String newKeyName = getRandomString();
         currentKeyName = newKeyName;
         return newKeyName;
