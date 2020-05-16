@@ -29,11 +29,16 @@ public class OpenWeatherTesting {
         t.click("Edit");
         t.isTextVisible("API key was edited successfully");
         t.isTextVisible(tu.getCurrentKeyName());
-        t.saveAPIKeyToFile(tu.getCurrentKeyName());
+        t.saveAPIKeyAsJsonToFile(tu.getDefaultKey(), tu.getCurrentKeyName());
     }
 
     @Test(description = "API response testing", groups = {"api", "all"})
     public void tc00002() {
-        at.getCurrentWeatherByCityName("Vilnius", t.loadAPIKeyFromFile());
+        at.checkGoodApiResponse("Vilnius", t.loadAPIAsJsonFromFile(tu.getDefaultKey()));
+    }
+
+    @Test(description = "API response testing", groups = {"api", "all"})
+    public void tc00003() {
+        at.checkBadApiResponse("Vilnius", "3acdf3793aa1e92b489");
     }
 }

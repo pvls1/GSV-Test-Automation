@@ -12,9 +12,13 @@ import java.net.HttpURLConnection;
  */
 public class APITester {
 
-    public void getCurrentWeatherByCityName(String cityName, String apiKey) {
-        Response response = RestAssured.get("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey);
-        int code = response.getStatusCode();
-        Assert.assertEquals(code, HttpURLConnection.HTTP_OK);
+    public void checkGoodApiResponse(String cityName, String apiKey) {
+        Response response = RestAssured.get(String.format("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", cityName, apiKey));
+        Assert.assertEquals(response.getStatusCode(), HttpURLConnection.HTTP_OK);
+    }
+
+    public void checkBadApiResponse(String cityName, String apiKey) {
+        Response response = RestAssured.get(String.format("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", cityName, apiKey));
+        Assert.assertEquals(response.getStatusCode(), HttpURLConnection.HTTP_UNAUTHORIZED);
     }
 }

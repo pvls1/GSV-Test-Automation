@@ -13,6 +13,7 @@ public class TestUser {
     private String password;
     private String keyName;
     private String currentKeyName;
+    private String defaultKey;
 
     public TestUser() {
         this.testPage = "https://home.openweathermap.org/";
@@ -20,6 +21,7 @@ public class TestUser {
         this.password = "Slaptazodis1";
         this.keyName = getRandomString();
         this.currentKeyName = keyName;
+        this.defaultKey = "Default";
     }
 
     public String getTestPage() {
@@ -46,5 +48,9 @@ public class TestUser {
         String newKeyName = getRandomString();
         currentKeyName = newKeyName;
         return newKeyName;
+    }
+
+    public String getDefaultKey() {
+        return defaultKey;
     }
 }

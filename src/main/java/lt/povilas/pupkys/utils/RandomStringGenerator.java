@@ -20,7 +20,7 @@ public class RandomStringGenerator {
         return new String(text);
     }
 
-    public static String getRandomString(){
-       return generateString(random, SOURCES, 10);
+    public static String getRandomString() {
+        return generateString(random, SOURCES, 10);
     }
 }
