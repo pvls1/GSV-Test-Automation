@@ -13,6 +13,9 @@ import static org.hamcrest.Matchers.*;
  */
 public class APITester {
 
+    /**
+     * Checks if response is HTTP_OK
+     */
     public void checkGoodApiResponse(String cityName, String apiKey) {
         Response response = RestAssured.given().
                 when().
@@ -22,6 +25,9 @@ public class APITester {
                 extract().response();
     }
 
+    /**
+     * Checks if response is HTTP_UNAUTHORIZED
+     */
     public void checkBadApiResponse(String cityName, String apiKey) {
         Response response = RestAssured.given().
                 when().
@@ -31,6 +37,9 @@ public class APITester {
                 extract().response();
     }
 
+    /**
+     * Validates JSON response
+     */
     public void checkAPIResponseData(String cityName, String apiKey) {
         Response response = RestAssured.given().
                 when().

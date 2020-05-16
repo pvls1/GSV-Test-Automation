@@ -15,6 +15,9 @@ public class TestUser {
     private String currentKeyName;
     private String defaultKey;
 
+    /**
+     * Builds test user
+     */
     public TestUser() {
         this.testPage = "https://home.openweathermap.org/";
         this.userName = "tt1585087@gmail.com";
@@ -24,32 +27,53 @@ public class TestUser {
         this.defaultKey = "Default";
     }
 
+    /**
+     * @return String
+     */
     public String getTestPage() {
         return testPage;
     }
 
+    /**
+     * @return String
+     */
     public String getUserName() {
         return userName;
     }
 
+    /**
+     * @return String
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * @return String
+     */
     public String getKeyName() {
         return keyName;
     }
 
+    /**
+     * @return String
+     */
     public String getCurrentKeyName() {
         return currentKeyName;
     }
 
+    /**
+     * @return String
+     */
     public String getNewKeyName() {
         String newKeyName = getRandomString();
         currentKeyName = newKeyName;
         return newKeyName;
     }
 
+    /**
+     * @return String
+     */
     public String getDefaultKey() {
         return defaultKey;
     }

@@ -20,6 +20,9 @@ public class WebTester {
     protected SelenideElement lastElement = null;
     protected JavascriptExecutor jsExec;
 
+    /**
+     * Opens Chrome browser and sets WebDriver
+     */
     protected void openInChrome(String url) {
         System.setProperty("selenide.browser", "chrome");
         open(url);
@@ -27,6 +30,9 @@ public class WebTester {
         jsExec = (JavascriptExecutor) getWebDriver();
     }
 
+    /**
+     * Opens Firefox browser and sets WebDriver
+     */
     protected void openInFireFox(String url) {
         System.setProperty("selenide.browser", "firefox");
         open(url);
@@ -34,6 +40,9 @@ public class WebTester {
         jsExec = (JavascriptExecutor) getWebDriver();
     }
 
+    /**
+     * Opens Internet explorer browser and sets WebDriver
+     */
     protected void openInInternetExplorer(String url) {
         System.setProperty("selenide.browser", "ie");
         open(url);
@@ -41,12 +50,18 @@ public class WebTester {
         jsExec = (JavascriptExecutor) getWebDriver();
     }
 
+    /**
+     * Add border to web elements
+     */
     protected void highlightElement(SelenideElement we) {
         unhighlightLast();
         lastElement = we;
         jsExec.executeScript("arguments[0].style.border='3px solid red'", we);
     }
 
+    /**
+     * Removes highlights from web elements
+     */
     protected void unhighlightLast() {
         if (lastElement != null) {
             try {
@@ -58,6 +73,11 @@ public class WebTester {
         }
     }
 
+    /**
+     * Finds web elements by given text
+     *
+     * @return list
+     */
     protected List<SelenideElement> findElementsByText(String linkText) {
         String expectedText = linkText.trim();
         String a = "//a[text()[normalize-space(.)='" + expectedText + "']]";
@@ -80,6 +100,11 @@ public class WebTester {
         return htmlElements;
     }
 
+    /**
+     * Finds input elements by given text
+     *
+     * @return list
+     */
     protected List<SelenideElement> findInputElementsByXpath(String text) {
         String expectedText = text.trim();
         String input = "//input[@placeholder=\"" + expectedText + "\"]";
@@ -92,26 +117,41 @@ public class WebTester {
         return htmlElements;
     }
 
+    /**
+     * Sets given text to given input field
+     */
     public void setInput(String inputLabel, String text, int index) {
         SelenideElement se = findInputElementsByXpath(inputLabel).get(index);
         highlightElement(se);
         se.setValue(text);
     }
 
+    /**
+     * Sets given text to given input field
+     */
     public void setInput(String inputLabel, String text) {
         setInput(inputLabel, text, 0);
     }
 
+    /**
+     * Clicks web element by given text
+     */
     public void click(String text, int index) {
         SelenideElement se = findElementsByText(text).get(index);
         highlightElement(se);
         se.click();
     }
 
+    /**
+     * Clicks web element by given text
+     */
     public void click(String text) {
         click(text, 0);
     }
 
+    /**
+     * Checks if given text is visible
+     */
     public void isTextVisible(String text) {
         SelenideElement se = $(By.xpath("//*[text()[normalize-space(.)=\"" + text + "\"]]"));
         highlightElement(se);

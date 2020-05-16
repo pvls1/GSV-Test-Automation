@@ -16,11 +16,18 @@ public class OpenWeatherTesting {
     OpenWeatherTester t = new OpenWeatherTester();
     APITester at = new APITester();
 
+    /**
+     * After test suite completed opens test report
+     */
     @AfterSuite(groups = {"ui", "api", "all"})
     public void showReport() {
         FileUtils.openReport();
     }
 
+    /**
+     * This test case log ins in to page,
+     * generates new API key, edits it and save Default and the new generated key to txt file
+     */
     @Test(description = "API Key testing", groups = {"ui", "all"})
     public void tc00001() {
         t.openInChrome(tu.getTestPage());
@@ -39,16 +46,25 @@ public class OpenWeatherTesting {
         t.saveAPIKeyAsJsonToFile(tu.getDefaultKey(), tu.getCurrentKeyName());
     }
 
+    /**
+     * This test case checks if api response is HTTP_OK
+     */
     @Test(description = "Good API response", groups = {"api", "all"})
     public void tc00002() {
         at.checkGoodApiResponse("Vilnius", t.loadAPIAsJsonFromFile(tu.getDefaultKey()));
     }
 
+    /**
+     * This test case checks if api response is HTTP_UNAUTHORIZED
+     */
     @Test(description = "Bad API response", groups = {"api", "all"})
     public void tc00003() {
         at.checkBadApiResponse("Vilnius", "3acdf3793aa1e92b489");
     }
 
+    /**
+     * This test case checks validates JSON response
+     */
     @Test(description = "Validate API response data", groups = {"api", "all"})
     public void tc00004() {
         at.checkAPIResponseData("Vilnius", t.loadAPIAsJsonFromFile(tu.getDefaultKey()));

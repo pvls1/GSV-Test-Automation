@@ -17,6 +17,9 @@ public class FileUtils {
     private static String path = "APIKey.txt";
     private static String url = "test-output/index.html";
 
+    /**
+     * Writes string to file
+     */
     public static void writeToFile(String text) {
         try {
             Files.writeString(Paths.get(path), text);
@@ -25,6 +28,9 @@ public class FileUtils {
         }
     }
 
+    /**
+     * Reads string from file
+     */
     public static String readFromFile() {
         String content = null;
         try {
@@ -36,6 +42,9 @@ public class FileUtils {
         return content;
     }
 
+    /**
+     * Writes JSON to file
+     */
     public static void writeJsonToFile(JSONObject jsonObject) {
         try (FileWriter fileWriter = new FileWriter(path)) {
             fileWriter.write(jsonObject.toJSONString());
@@ -44,6 +53,9 @@ public class FileUtils {
         }
     }
 
+    /**
+     * Reads JSON from file
+     */
     public static JSONObject readJsonFromFile() {
         JSONParser parser = new JSONParser();
         try (Reader reader = new FileReader(path)) {
@@ -56,6 +68,9 @@ public class FileUtils {
         return null;
     }
 
+    /**
+     * Opens test report
+     */
     public static void openReport() {
         File htmlFile = new File(url);
         try {

@@ -12,6 +12,11 @@ public class RandomStringGenerator {
     private static final String SOURCES =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 
+    /**
+     * Generates random string
+     *
+     * @return String
+     */
     private static String generateString(Random random, String characters, int length) {
         char[] text = new char[length];
         for (int i = 0; i < length; i++) {
@@ -20,6 +25,11 @@ public class RandomStringGenerator {
         return new String(text);
     }
 
+    /**
+     * Returns random generated String
+     *
+     * @return String
+     */
     public static String getRandomString() {
         return generateString(random, SOURCES, 10);
     }
