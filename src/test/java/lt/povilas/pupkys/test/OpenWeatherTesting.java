@@ -3,6 +3,8 @@ package lt.povilas.pupkys.test;
 import lt.povilas.pupkys.autotester.APITester;
 import lt.povilas.pupkys.autotester.OpenWeatherTester;
 import lt.povilas.pupkys.testdata.TestUser;
+import lt.povilas.pupkys.utils.FileUtils;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 
 /**
@@ -13,6 +15,11 @@ public class OpenWeatherTesting {
     TestUser tu = new TestUser();
     OpenWeatherTester t = new OpenWeatherTester();
     APITester at = new APITester();
+
+    @AfterSuite(groups = {"ui", "api", "all"})
+    public void showReport() {
+        FileUtils.openReport();
+    }
 
     @Test(description = "API Key testing", groups = {"ui", "all"})
     public void tc00001() {
@@ -32,13 +39,18 @@ public class OpenWeatherTesting {
         t.saveAPIKeyAsJsonToFile(tu.getDefaultKey(), tu.getCurrentKeyName());
     }
 
-    @Test(description = "API response testing", groups = {"api", "all"})
+    @Test(description = "Good API response", groups = {"api", "all"})
     public void tc00002() {
         at.checkGoodApiResponse("Vilnius", t.loadAPIAsJsonFromFile(tu.getDefaultKey()));
     }
 
-    @Test(description = "API response testing", groups = {"api", "all"})
+    @Test(description = "Bad API response", groups = {"api", "all"})
     public void tc00003() {
         at.checkBadApiResponse("Vilnius", "3acdf3793aa1e92b489");
+    }
+
+    @Test(description = "Validate API response data", groups = {"api", "all"})
+    public void tc00004() {
+        at.checkAPIResponseData("Vilnius", t.loadAPIAsJsonFromFile(tu.getDefaultKey()));
     }
 }

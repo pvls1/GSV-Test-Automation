@@ -4,10 +4,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
+import java.awt.*;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -16,7 +14,8 @@ import java.nio.file.Paths;
  * @project SEB-GSV-Test-Automation
  */
 public class FileUtils {
-    private static String path = ".\\APIKey.txt";
+    private static String path = "APIKey.txt";
+    private static String url = "test-output/index.html";
 
     public static void writeToFile(String text) {
         try {
@@ -55,6 +54,15 @@ public class FileUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void openReport() {
+        File htmlFile = new File(url);
+        try {
+            Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

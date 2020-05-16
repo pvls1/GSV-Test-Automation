@@ -10,7 +10,6 @@
 			<include name="ui" />
 			<include name="api" />
 		</define>
-
 		<run>
 			<include name="all" />
 		</run>
