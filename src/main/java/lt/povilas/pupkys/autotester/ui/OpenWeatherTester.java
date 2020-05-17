@@ -1,4 +1,4 @@
-package lt.povilas.pupkys.autotester;
+package lt.povilas.pupkys.autotester.ui;
 
 import com.codeborne.selenide.SelenideElement;
 import org.json.simple.JSONObject;
@@ -11,7 +11,7 @@ import static lt.povilas.pupkys.utils.FileUtils.*;
  * @author Povilas Pupkys
  * @project SEB-GSV-Test-Automation
  */
-public class OpenWeatherTester extends WebTester {
+public class OpenWeatherTester extends AbstractWebTester {
 
     /**
      * Checks if cookies message is displayed

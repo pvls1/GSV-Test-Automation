@@ -6,7 +6,7 @@ import static lt.povilas.pupkys.utils.RandomStringGenerator.getRandomString;
  * @author Povilas Pupkys
  * @project SEB-GSV-Test-Automation
  */
-public class TestUser {
+public class TestConfig {
 
     private String testPage;
     private String userName;
@@ -18,7 +18,7 @@ public class TestUser {
     /**
      * Builds test user
      */
-    public TestUser() {
+    public TestConfig() {
         this.testPage = "https://home.openweathermap.org/";
         this.userName = "tt1585087@gmail.com";
         this.password = "Slaptazodis1";

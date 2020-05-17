@@ -1,7 +1,8 @@
-package lt.povilas.pupkys.autotester;
+package lt.povilas.pupkys.autotester.api;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import lt.povilas.pupkys.autotester.Tester;
 
 import java.net.HttpURLConnection;
 
@@ -11,7 +12,7 @@ import static org.hamcrest.Matchers.*;
  * @author Povilas Pupkys
  * @project SEB-GSV-Test-Automation
  */
-public class APITester {
+public class APITester extends Tester {
 
     /**
      * Checks if response is HTTP_OK

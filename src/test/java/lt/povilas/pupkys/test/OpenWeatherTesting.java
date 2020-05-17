@@ -1,8 +1,8 @@
 package lt.povilas.pupkys.test;
 
-import lt.povilas.pupkys.autotester.APITester;
-import lt.povilas.pupkys.autotester.OpenWeatherTester;
-import lt.povilas.pupkys.testdata.TestUser;
+import lt.povilas.pupkys.autotester.api.APITester;
+import lt.povilas.pupkys.autotester.ui.OpenWeatherTester;
+import lt.povilas.pupkys.testdata.TestConfig;
 import lt.povilas.pupkys.utils.FileUtils;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
  * @project SEB-GSV-Test-Automation
  */
 public class OpenWeatherTesting {
-    TestUser tu = new TestUser();
-    OpenWeatherTester t = new OpenWeatherTester();
-    APITester at = new APITester();
+    private TestConfig tu = new TestConfig();
+    private OpenWeatherTester t = new OpenWeatherTester();
+    private APITester at = new APITester();
 
     /**
      * After test suite completed opens test report

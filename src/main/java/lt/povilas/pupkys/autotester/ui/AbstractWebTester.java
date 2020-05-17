@@ -1,6 +1,7 @@
-package lt.povilas.pupkys.autotester;
+package lt.povilas.pupkys.autotester.ui;
 
 import com.codeborne.selenide.SelenideElement;
+import lt.povilas.pupkys.autotester.Tester;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
@@ -15,7 +16,7 @@ import static org.testng.AssertJUnit.assertTrue;
  * @author Povilas Pupkys
  * @project SEB-GSV-Test-Automation
  */
-public class WebTester {
+public class AbstractWebTester extends Tester {
 
     protected SelenideElement lastElement = null;
     protected JavascriptExecutor jsExec;

@@ -14,15 +14,15 @@ import java.nio.file.Paths;
  * @project SEB-GSV-Test-Automation
  */
 public class FileUtils {
-    private static String path = "APIKey.txt";
-    private static String url = "test-output/index.html";
+    private static final String PATH = "APIKey.txt";
+    private static final String URL = "test-output/index.html";
 
     /**
      * Writes string to file
      */
     public static void writeToFile(String text) {
         try {
-            Files.writeString(Paths.get(path), text);
+            Files.writeString(Paths.get(PATH), text);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class FileUtils {
     public static String readFromFile() {
         String content = null;
         try {
-            content = Files.readString(Paths.get(path));
+            content = Files.readString(Paths.get(PATH));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class FileUtils {
      * Writes JSON to file
      */
     public static void writeJsonToFile(JSONObject jsonObject) {
-        try (FileWriter fileWriter = new FileWriter(path)) {
+        try (FileWriter fileWriter = new FileWriter(PATH)) {
             fileWriter.write(jsonObject.toJSONString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,7 +58,7 @@ public class FileUtils {
      */
     public static JSONObject readJsonFromFile() {
         JSONParser parser = new JSONParser();
-        try (Reader reader = new FileReader(path)) {
+        try (Reader reader = new FileReader(PATH)) {
             return (JSONObject) parser.parse(reader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,7 +72,7 @@ public class FileUtils {
      * Opens test report
      */
     public static void openReport() {
-        File htmlFile = new File(url);
+        File htmlFile = new File(URL);
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException e) {
