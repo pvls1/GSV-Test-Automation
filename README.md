@@ -29,3 +29,5 @@ Example:
 ```
 mvn clean test -Denv=dev -Dgroups=all
 ```
+
+Or you can run it straight from IDE
