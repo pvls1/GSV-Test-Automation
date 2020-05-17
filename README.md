@@ -1,10 +1,15 @@
 # GSV-Test-Automation #
 
+This is a small automation framework based on Selenide.
+The test case scenarios are made for openweathermap.org UI & API testing.
 
-### Requirements ###
+### Tools used ###
 
-* Java version: 1.8
+* Java 1.8
 * Maven
+* Selenide
+* TestNG
+* Rest-assured
 
 ### Setup for first time ###
 
@@ -30,4 +35,4 @@ Example:
 mvn clean test -Denv=dev -Dgroups=all
 ```
 
-Or you can run it straight from IDE
+Or it can be run it straight from IDE
