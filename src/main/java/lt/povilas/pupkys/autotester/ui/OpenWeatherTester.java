@@ -34,6 +34,8 @@ public class OpenWeatherTester extends AbstractWebTester {
 
     /**
      * Opens Chrome browser and accepts cookies
+     *
+     * @param url link to the page
      */
     @Override
     public void openInChrome(String url) {
@@ -43,6 +45,8 @@ public class OpenWeatherTester extends AbstractWebTester {
 
     /**
      * Opens Firefox browser and accepts cookies
+     *
+     * @param url link to the page
      */
     @Override
     public void openInFireFox(String url) {
@@ -52,6 +56,8 @@ public class OpenWeatherTester extends AbstractWebTester {
 
     /**
      * Opens Internet explorer browser and accepts cookies
+     *
+     * @param url link to the page
      */
     @Override
     public void openInInternetExplorer(String url) {
@@ -61,6 +67,8 @@ public class OpenWeatherTester extends AbstractWebTester {
 
     /**
      * Clicks edit by given text
+     *
+     * @param text text to click
      */
     public void clickEdit(String text) {
         SelenideElement se = $(By.xpath("//a[@data-name='" + text + "']"));
@@ -70,6 +78,8 @@ public class OpenWeatherTester extends AbstractWebTester {
 
     /**
      * Saves given API key to txt file
+     *
+     * @param name of the api key
      */
     public void saveAPIKeyToFile(String name) {
         SelenideElement se = $(By.xpath("//td[text()[normalize-space(.)='" + name + "']]/preceding-sibling::td/pre"));
@@ -88,6 +98,8 @@ public class OpenWeatherTester extends AbstractWebTester {
 
     /**
      * Saves given string array to file as JSON
+     *
+     * @param name of api key
      */
     public void saveAPIKeyAsJsonToFile(String... name) {
         JSONObject jsonObject = new JSONObject();
@@ -102,6 +114,7 @@ public class OpenWeatherTester extends AbstractWebTester {
     /**
      * Reads API key from txt file
      *
+     * @param name of the apie key
      * @return String
      */
     public String loadAPIAsJsonFromFile(String name) {

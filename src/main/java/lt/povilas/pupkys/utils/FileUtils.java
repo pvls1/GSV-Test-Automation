@@ -19,6 +19,8 @@ public class FileUtils {
 
     /**
      * Writes string to file
+     *
+     * @param text given string to be written to file
      */
     public static void writeToFile(String text) {
         try {
@@ -44,6 +46,8 @@ public class FileUtils {
 
     /**
      * Writes JSON to file
+     *
+     * @param jsonObject given JSON to be written to file
      */
     public static void writeJsonToFile(JSONObject jsonObject) {
         try (FileWriter fileWriter = new FileWriter(PATH)) {

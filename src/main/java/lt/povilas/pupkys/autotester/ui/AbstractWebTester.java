@@ -23,6 +23,8 @@ public class AbstractWebTester extends Tester {
 
     /**
      * Opens Chrome browser and sets WebDriver
+     *
+     * @param url link to the page
      */
     protected void openInChrome(String url) {
         System.setProperty("selenide.browser", "chrome");
@@ -33,6 +35,8 @@ public class AbstractWebTester extends Tester {
 
     /**
      * Opens Firefox browser and sets WebDriver
+     *
+     * @param url link to the page
      */
     protected void openInFireFox(String url) {
         System.setProperty("selenide.browser", "firefox");
@@ -43,6 +47,8 @@ public class AbstractWebTester extends Tester {
 
     /**
      * Opens Internet explorer browser and sets WebDriver
+     *
+     * @param url link to the page
      */
     protected void openInInternetExplorer(String url) {
         System.setProperty("selenide.browser", "ie");
@@ -53,11 +59,13 @@ public class AbstractWebTester extends Tester {
 
     /**
      * Add border to web elements
+     *
+     * @param se the selenide element
      */
-    protected void highlightElement(SelenideElement we) {
+    protected void highlightElement(SelenideElement se) {
         unhighlightLast();
-        lastElement = we;
-        jsExec.executeScript("arguments[0].style.border='3px solid red'", we);
+        lastElement = se;
+        jsExec.executeScript("arguments[0].style.border='3px solid red'", se);
     }
 
     /**
@@ -77,7 +85,8 @@ public class AbstractWebTester extends Tester {
     /**
      * Finds web elements by given text
      *
-     * @return list
+     * @param linkText the text to be found
+     * @return list of elements found
      */
     protected List<SelenideElement> findElementsByText(String linkText) {
         String expectedText = linkText.trim();
@@ -104,7 +113,8 @@ public class AbstractWebTester extends Tester {
     /**
      * Finds input elements by given text
      *
-     * @return list
+     * @param text text to be found
+     * @return list of elements found
      */
     protected List<SelenideElement> findInputElementsByXpath(String text) {
         String expectedText = text.trim();
@@ -120,6 +130,10 @@ public class AbstractWebTester extends Tester {
 
     /**
      * Sets given text to given input field
+     *
+     * @param inputLabel input field name
+     * @param text       text to be put in to input field
+     * @param index      number of input found
      */
     public void setInput(String inputLabel, String text, int index) {
         SelenideElement se = findInputElementsByXpath(inputLabel).get(index);
@@ -129,6 +143,9 @@ public class AbstractWebTester extends Tester {
 
     /**
      * Sets given text to given input field
+     *
+     * @param inputLabel input field name
+     * @param text       text to be put in to input field
      */
     public void setInput(String inputLabel, String text) {
         setInput(inputLabel, text, 0);
@@ -136,6 +153,9 @@ public class AbstractWebTester extends Tester {
 
     /**
      * Clicks web element by given text
+     *
+     * @param text  text to be clicked
+     * @param index number of text found
      */
     public void click(String text, int index) {
         SelenideElement se = findElementsByText(text).get(index);
@@ -145,6 +165,8 @@ public class AbstractWebTester extends Tester {
 
     /**
      * Clicks web element by given text
+     *
+     * @param text text to be clicked
      */
     public void click(String text) {
         click(text, 0);
@@ -152,6 +174,8 @@ public class AbstractWebTester extends Tester {
 
     /**
      * Checks if given text is visible
+     *
+     * @param text text to check
      */
     public void isTextVisible(String text) {
         SelenideElement se = $(By.xpath("//*[text()[normalize-space(.)=\"" + text + "\"]]"));

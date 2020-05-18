@@ -28,42 +28,42 @@ public class TestConfig {
     }
 
     /**
-     * @return String
+     * @return test page
      */
     public String getTestPage() {
         return testPage;
     }
 
     /**
-     * @return String
+     * @return the user name
      */
     public String getUserName() {
         return userName;
     }
 
     /**
-     * @return String
+     * @return the password
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * @return String
+     * @return the key name
      */
     public String getKeyName() {
         return keyName;
     }
 
     /**
-     * @return String
+     * @return the current key name
      */
     public String getCurrentKeyName() {
         return currentKeyName;
     }
 
     /**
-     * @return String
+     * @return the new key name
      */
     public String getNewKeyName() {
         String newKeyName = getRandomString();
@@ -72,7 +72,7 @@ public class TestConfig {
     }
 
     /**
-     * @return String
+     * @return the default key
      */
     public String getDefaultKey() {
         return defaultKey;

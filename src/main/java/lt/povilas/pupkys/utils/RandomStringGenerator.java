@@ -15,7 +15,10 @@ public class RandomStringGenerator {
     /**
      * Generates random string
      *
-     * @return String
+     * @param random
+     * @param characters sources of the characters to be used
+     * @param length     of the generated string
+     * @return random generated string
      */
     private static String generateString(Random random, String characters, int length) {
         char[] text = new char[length];
@@ -28,7 +31,7 @@ public class RandomStringGenerator {
     /**
      * Returns random generated String
      *
-     * @return String
+     * @return random generated String
      */
     public static String getRandomString() {
         return generateString(random, SOURCES, 10);

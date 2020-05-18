@@ -16,6 +16,9 @@ public class APITester extends Tester {
 
     /**
      * Checks if response is HTTP_OK
+     *
+     * @param cityName the name of the city to be tested
+     * @param apiKey   the api key
      */
     public void checkGoodApiResponse(String cityName, String apiKey) {
         Response response = RestAssured.given().
@@ -28,6 +31,9 @@ public class APITester extends Tester {
 
     /**
      * Checks if response is HTTP_UNAUTHORIZED
+     *
+     * @param cityName the name of the city to be tested
+     * @param apiKey   the api key
      */
     public void checkBadApiResponse(String cityName, String apiKey) {
         Response response = RestAssured.given().
@@ -40,6 +46,9 @@ public class APITester extends Tester {
 
     /**
      * Validates JSON response
+     *
+     * @param cityName the name of the city to be tested
+     * @param apiKey   the api key
      */
     public void checkAPIResponseData(String cityName, String apiKey) {
         Response response = RestAssured.given().
